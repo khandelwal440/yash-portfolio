@@ -1,270 +1,109 @@
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Sparkles, Code2, Zap } from "lucide-react";
-import Image from "next/image";
+import {
+  ArrowRight,
+  Code2,
+  Database,
+  Github,
+  Linkedin,
+  Mail,
+  Server,
+  Sparkles,
+} from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
-import { highlights, profile, projects, services, skills, strengths, timeline } from "@/lib/data";
+import { profile, projects, services, skills, strengths, timeline } from "@/lib/data";
+
+const skillGroups = [
+  { title: "Languages", items: [["Python", 90], ["JavaScript", 82], ["TypeScript", 78]] },
+  { title: "Frameworks", items: [["Next.js", 84], ["React", 80], ["Node.js", 75]] },
+  { title: "Infrastructure", items: [["Docker", 85], ["Kubernetes", 76], ["AWS", 82], ["CI/CD", 80]] },
+];
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-mesh text-slate-100">
-      {/* Animated Background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
-
-      {/* Header */}
-      <header className="sticky top-0 z-30 glass-effect border-b border-slate-700/50 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="#home" className="text-lg font-bold tracking-wider bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Yash
-          </a>
-          <div className="hidden items-center gap-8 text-sm font-medium text-slate-300 sm:flex">
-            <a href="#projects" className="hover:text-purple-400 transition-colors duration-300">About Me</a>
-            <a href="#projects" className="hover:text-purple-400 transition-colors duration-300">Projects</a>
-            <a href="#skills" className="hover:text-purple-400 transition-colors duration-300">Skills</a>
-            <a href="#contact" className="hover:text-purple-400 transition-colors duration-300">Contact</a>
-          </div>
-          <a href="#contact" className="inline-flex items-center gap-2 btn-gradient rounded-lg px-6 py-2.5 text-sm font-semibold text-white">
-            Get in Touch <Mail className="h-4 w-4" />
-          </a>
+    <main>
+      <header className="site-header">
+        <a className="brand" href="#home" aria-label="Yash Khandelwal home">
+          <span className="brand-mark">YK</span>
+          <span>Yash Khandelwal</span>
+        </a>
+        <nav className="nav-links" aria-label="Primary navigation">
+          <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
         </nav>
+        <div className="header-socials">
+          <a href={profile.github} aria-label="GitHub"><Github size={19} /></a>
+          <a href={profile.linkedin} aria-label="LinkedIn"><Linkedin size={19} /></a>
+          <a href={`mailto:${profile.email}`} aria-label="Email"><Mail size={19} /></a>
+        </div>
       </header>
 
-      {/* Hero Section */}
-      <section id="home" className="relative overflow-hidden">
-        <div className="mx-auto grid min-h-[calc(100vh-73px)] max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
-          <div className="space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 glass-effect rounded-full px-4 py-2 border border-purple-400/30 w-fit">
-              <Sparkles className="h-4 w-4 text-purple-400" />
-              <span className="text-sm font-semibold text-purple-300">Welcome to my portfolio</span>
-            </div>
-
-            {/* Main Heading */}
-            <div className="space-y-4">
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black leading-tight">
-                <span className="gradient-text">Full Stack</span>
-                <br />
-                Developer
-              </h1>
-              <p className="text-xl text-slate-300 max-w-2xl leading-relaxed">
-                Building fast, polished web applications with practical backend systems, clean interfaces, and deployment-ready foundations.
-              </p>
-            </div>
-
-            {/* Location */}
-            <div className="flex items-center gap-2 text-slate-400">
-              <MapPin className="h-5 w-5 text-purple-400" />
-              <span>{profile.location}</span>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a href="#projects" className="inline-flex items-center gap-2 btn-gradient rounded-lg px-8 py-3 text-base font-bold text-white shadow-lg">
-                View My Work <ArrowUpRight className="h-5 w-5" />
-              </a>
-              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 btn-outline-gradient rounded-lg px-8 py-3 text-base font-bold">
-                <Github className="h-5 w-5" /> GitHub
-              </a>
-              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 glass-effect rounded-lg px-8 py-3 text-base font-bold text-slate-300 border border-slate-600 hover:border-purple-400/50 transition-all duration-300">
-                <Linkedin className="h-5 w-5" /> LinkedIn
-              </a>
-            </div>
+      <section className="hero" id="home">
+        <div className="hero-glow" />
+        <div className="hero-content">
+          <p className="eyebrow"><Sparkles size={15} /> Software Developer</p>
+          <h1>Yash Khandelwal</h1>
+          <h2>Full Stack Developer &amp; Cloud Builder</h2>
+          <p className="hero-copy">Building responsive web applications and scalable cloud infrastructure with clean code, thoughtful design, and reliable delivery.</p>
+          <div className="stats">
+            <div><strong>3+</strong><span>Projects Built</span></div>
+            <div><strong>10+</strong><span>Technologies</span></div>
+            <div><strong>AWS</strong><span>Cloud Focus</span></div>
           </div>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#projects">View My Work <ArrowRight size={17} /></a>
+            <a className="button" href="#about">About Me</a>
+            <a className="button" href="#contact">Get In Touch</a>
+          </div>
+          <div className="hero-socials">
+            <a href={profile.github}><Github size={18} /> GitHub</a>
+            <a href={profile.linkedin}><Linkedin size={18} /> LinkedIn</a>
+            <a href={`mailto:${profile.email}`}><Mail size={18} /> Email</a>
+          </div>
+        </div>
+        <a className="scroll-cue" href="#about" aria-label="Scroll to about section"><span /></a>
+      </section>
 
-          {/* Right Side - Featured Image */}
-          <div className="relative h-[500px] sm:h-[600px] hidden lg:block">
-            <div className="relative w-full h-full rounded-2xl overflow-hidden glass-effect border border-purple-400/20 group">
-              <Image
-                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"
-                alt="Developer workspace"
-                fill
-                priority
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            </div>
-
-            {/* Floating Stats */}
-            <div className="absolute -bottom-6 left-6 right-6 glass-effect border border-purple-400/30 rounded-xl p-6 backdrop-blur-xl">
-              <div className="grid grid-cols-3 gap-4">
-                {highlights.map((item) => (
-                  <div key={item.label} className="text-center">
-                    <div className="text-2xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">{item.value}</div>
-                    <div className="mt-1 text-xs font-semibold text-slate-400">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <section className="section section-soft" id="about">
+        <div className="section-heading"><p className="eyebrow">About</p><h2>About Me</h2></div>
+        <div className="about-grid">
+          <div className="about-copy">
+            <p>I&apos;m a software developer and infrastructure enthusiast who enjoys turning complex ideas into dependable, useful products. I care about the details that make software fast, accessible, and easy to maintain.</p>
+            <div className="copy-block"><h3>Current Focus</h3><p>Building cloud-native applications with modern web technologies, AWS, Kubernetes, Docker, and infrastructure as code.</p></div>
+            <div className="copy-block"><h3>What I Care About</h3><p>Clean architecture, automated delivery, scalable systems, and practical interfaces that solve real problems.</p></div>
+          </div>
+          <div className="focus-cards">
+            {services.map((service) => { const Icon = service.icon; return <article className="focus-card" key={service.title}><Icon size={22} /><h3>{service.title}</h3><p>{service.text}</p></article>; })}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="relative py-20 border-t border-slate-700/50">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <h2 className="text-4xl sm:text-5xl font-black mb-4">
-              <span className="gradient-text">What I Build</span>
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">Expert in creating full-stack solutions that combine beautiful frontends with robust backends</p>
-          </div>
+      <section className="section" id="skills">
+        <div className="section-heading"><p className="eyebrow">Capabilities</p><h2>Skills &amp; Technologies</h2><p>I use a balanced toolkit to build robust products from interface to infrastructure.</p></div>
+        <div className="skill-grid">
+          {skillGroups.map((group) => <div className="skill-group" key={group.title}><h3>{group.title}</h3>{group.items.map(([name, amount]) => <div className="skill-row" key={name as string}><div><span>{name}</span><b>{amount}%</b></div><i><em style={{ width: `${amount}%` }} /></i></div>)}</div>)}
+        </div>
+        <div className="tags">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <div key={service.title} className="card-hover group glass-effect rounded-xl p-8 border border-slate-600 hover:border-purple-400/50 transition-all duration-300">
-                  <div className="glow-animation w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-slate-400 leading-relaxed">{service.text}</p>
-                </div>
-              );
-            })}
-          </div>
+      <section className="section section-soft" id="projects">
+        <div className="section-heading"><p className="eyebrow">Selected Work</p><h2>Featured Projects</h2><p>A selection of work spanning machine learning, cloud infrastructure, and full-stack development.</p></div>
+        <div className="project-list">
+          {projects.map((project, index) => <article className="project-card" key={project.title}>
+            <div className="project-number">0{index + 1}</div>
+            <div className="project-main"><span className="project-type">{project.type}</span><h3>{project.title}</h3><p>{project.description}</p><div className="tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div></div>
+            <a className="circle-link" href={profile.github} aria-label={`View ${project.title} on GitHub`}><ArrowRight size={20} /></a>
+          </article>)}
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="relative py-20 border-t border-slate-700/50">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <Code2 className="h-5 w-5 text-purple-400" />
-              <span className="text-sm font-bold uppercase tracking-widest text-purple-400">Featured Work</span>
-            </div>
-            <h2 className="text-5xl font-black mb-4">
-              <span className="gradient-text">Projects That Stand Out</span>
-            </h2>
-            <p className="text-slate-400 max-w-2xl">Carefully crafted projects showcasing product thinking and engineering depth</p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <div key={project.title} className="card-hover group glass-effect rounded-xl overflow-hidden border border-slate-600 hover:border-purple-400/50 transition-all duration-300">
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden bg-slate-800">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                </div>
-
-                {/* Project Info */}
-                <div className="p-6 space-y-4">
-                  <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-400/30">
-                    <Zap className="h-3 w-3 text-purple-400" />
-                    <span className="text-xs font-bold text-purple-300">{project.type}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold">{project.title}</h3>
-                  <p className="text-slate-400 leading-relaxed text-sm">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.stack.map((tech) => (
-                      <span key={tech} className="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-slate-700/50 border border-slate-600 text-slate-300">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="section journey">
+        <div className="section-heading"><p className="eyebrow">Journey</p><h2>How I Work</h2></div>
+        <div className="journey-grid"><div>{strengths.map(({ title, icon: Icon }) => <div className="strength" key={title}><Icon size={20} /><span>{title}</span></div>)}</div><div className="timeline">{timeline.map((item) => <article key={item.title}><small>{item.label}</small><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="relative py-20 border-t border-slate-700/50">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12">
-            <h2 className="text-5xl font-black mb-4">
-              <span className="gradient-text">Technical Arsenal</span>
-            </h2>
-            <p className="text-slate-400">Tools and technologies I master</p>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill) => (
-              <div key={skill} className="group glass-effect rounded-full px-6 py-3 border border-purple-400/30 hover:border-purple-400/60 transition-all duration-300 cursor-pointer">
-                <span className="font-semibold text-slate-200 group-hover:text-purple-300 transition-colors">{skill}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="section contact-section" id="contact">
+        <div className="section-heading"><p className="eyebrow">Contact</p><h2>Let&apos;s Connect</h2><p>Have an idea, an opportunity, or a project in mind? I&apos;d love to hear from you.</p></div>
+        <div className="contact-grid"><div className="contact-links"><h3>Get In Touch</h3><a href={`mailto:${profile.email}`}><Mail size={20}/><span><b>Email</b>{profile.email}</span></a><a href={profile.linkedin}><Linkedin size={20}/><span><b>LinkedIn</b>Connect with me</span></a><a href={profile.github}><Github size={20}/><span><b>GitHub</b>Explore my code</span></a><div className="collab"><h4>Open to collaborating on</h4><div className="tags"><span>Web apps</span><span>Cloud systems</span><span>DevOps</span><span>APIs</span></div></div></div><div><h3 className="form-title">Send a Message</h3><ContactForm /></div></div>
       </section>
-
-      {/* Journey Section */}
-      <section className="relative py-20 border-t border-slate-700/50">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-5xl font-black mb-16">
-            <span className="gradient-text-secondary">My Journey</span>
-          </h2>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Strengths */}
-            <div>
-              <h3 className="text-2xl font-bold mb-6">Core Strengths</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {strengths.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={item.title} className="card-hover glass-effect rounded-lg p-6 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300">
-                      <Icon className="h-6 w-6 text-cyan-400 mb-3" />
-                      <p className="font-bold">{item.title}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Timeline */}
-            <div>
-              <h3 className="text-2xl font-bold mb-6">Timeline</h3>
-              <div className="space-y-4">
-                {timeline.map((item) => (
-                  <div key={item.title} className="card-hover glass-effect rounded-lg p-6 border border-slate-600 hover:border-cyan-400/50 transition-all duration-300 relative pl-8">
-                    <div className="absolute left-3 top-6 w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400"></div>
-                    <div className="text-sm font-bold text-cyan-400 mb-1">{item.label}</div>
-                    <h4 className="text-lg font-bold mb-2">{item.title}</h4>
-                    <p className="text-slate-400 text-sm leading-relaxed">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="relative py-20 border-t border-slate-700/50">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-5xl font-black mb-6">
-                  <span className="gradient-text">Let&apos;s Work Together</span>
-              </h2>
-              <p className="text-slate-400 mb-8 leading-relaxed text-lg">
-                I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out and let&apos;s create something amazing together.
-              </p>
-              <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 text-lg font-bold text-purple-400 hover:text-purple-300 transition-colors">
-                {profile.email} <ArrowUpRight className="h-5 w-5" />
-              </a>
-            </div>
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="relative border-t border-slate-700/50 py-8">
-        <div className="mx-auto max-w-7xl px-6 text-center text-slate-500 text-sm">
-          <p>© 2024 Yash. Built with Next.js, TypeScript, and Tailwind CSS.</p>
-        </div>
-      </footer>
+      <footer><span>Built with care to showcase my work and ideas.</span><span>© 2026 Yash Khandelwal</span></footer>
     </main>
   );
 }

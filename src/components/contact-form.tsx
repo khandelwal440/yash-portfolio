@@ -49,14 +49,8 @@ export function ContactForm() {
         </label>
       </div>
       <label className="mt-4 block text-sm font-semibold text-ink">
-        Project type
-        <select name="projectType" required className="focus-ring mt-2 w-full rounded-md border border-ink/15 bg-white px-3 py-3 font-normal">
-          <option value="">Select one</option>
-          <option>Portfolio website</option>
-          <option>Full stack web app</option>
-          <option>Dashboard</option>
-          <option>Deployment help</option>
-        </select>
+        Subject
+        <input name="projectType" required minLength={2} className="focus-ring mt-2 w-full rounded-md border border-ink/15 bg-white px-3 py-3 font-normal" placeholder="What's this about?" />
       </label>
       <label className="mt-4 block text-sm font-semibold text-ink">
         Message
