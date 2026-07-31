@@ -47,11 +47,11 @@ export const about = {
 };
 
 
-export const skills = [
-{
+export const services = [
+  {
     title: "Technical Skills",
     text: "Python, Linux Fundamental, MySQL, web development,.",
-    icon: LayoutDashboard
+    icon: LayoutDashboard,
   },
   {
     title: "Devops & Cloud",
@@ -65,22 +65,47 @@ export const skills = [
   }
 ];
 
+export const skills = [
+  "Python",
+  "Linux",
+  "MySQL",
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "GitHub Actions",
+];
 
-export const Project = [
+export const highlights = [
+  { label: "Projects", value: "3+" },
+  { label: "Technologies", value: "10+" },
+  { label: "Cloud Focus", value: "AWS" },
+];
+
+export const projects = [
   {
-    label: "",
     title: "Diabetes prediction Model",
-    text: "Developed a machine learning model for diabetes prediction using Python, scikit-learn, and pandas, achieving high accuracy and providing valuable insights for healthcare applications."
+    type: "Machine Learning",
+    description: "Developed a machine learning model for diabetes prediction using Python, scikit-learn, and pandas, achieving high accuracy and providing valuable insights for healthcare applications.",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=80",
+    stack: ["Python", "scikit-learn", "pandas"],
   },
   {
-    label: "",
     title: "Three-Tier Architecture & Cloud",
-    text: "Hands-on experience with Three-Tier Architecture, Amazon EKS, Kubernetes, Docker, and Infrastructure as Code (IaC) for cloud application deployment."
+    type: "Cloud Infrastructure",
+    description: "Hands-on experience with Three-Tier Architecture, Amazon EKS, Kubernetes, Docker, and Infrastructure as Code (IaC) for cloud application deployment.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
+    stack: ["AWS", "EKS", "Kubernetes", "Docker"],
+  },
   {
-    label: "",
     title: "E-commerce",
-    text: "Built a strong foundation in e-commerce development, responsive web applications, and database-driven solutions."
-  }
+    type: "Full Stack",
+    description: "Built a strong foundation in e-commerce development, responsive web applications, and database-driven solutions.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80",
+    stack: ["Next.js", "TypeScript", "MySQL"],
+  },
 ];
 
 
@@ -88,4 +113,22 @@ export const strengths = [
   { title: "Clean Code", icon: Code2 },
   { title: "Responsive UI", icon: Smartphone },
   { title: "Reliable APIs", icon: ShieldCheck }
+];
+
+export const timeline = [
+  {
+    label: "Now",
+    title: "Cloud-Native Development",
+    text: "Building web applications and infrastructure with AWS, Kubernetes, Docker, and Infrastructure as Code.",
+  },
+  {
+    label: "Focus",
+    title: "Full-Stack Engineering",
+    text: "Creating responsive, database-driven applications with modern web technologies.",
+  },
+  {
+    label: "Foundation",
+    title: "Automation & Delivery",
+    text: "Improving reliability through CI/CD pipelines, GitHub Actions, and repeatable deployments.",
+  },
 ];

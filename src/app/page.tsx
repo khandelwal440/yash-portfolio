@@ -245,10 +245,11 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <h2 className="text-5xl font-black mb-6">
-                <span className="gradient-text">Let's Work Together</span>
+                  <span className="gradient-text">Let&apos;s Work Together</span>
               </h2>
               <p className="text-slate-400 mb-8 leading-relaxed text-lg">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out and let's create something amazing together.
+                I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out and let&apos;s create something amazing together.
+              </p>
               <a href={`mailto:${profile.email}`} className="inline-flex items-center gap-2 text-lg font-bold text-purple-400 hover:text-purple-300 transition-colors">
                 {profile.email} <ArrowUpRight className="h-5 w-5" />
               </a>
